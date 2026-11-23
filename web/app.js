@@ -31,7 +31,8 @@ async function carregarChamados() {
   feedback.textContent = '';
   try {
     const status = document.querySelector('#filtro-status').value;
-    const resposta = await fetch(`/api/chamados?status=${encodeURIComponent(status)}`);
+    const ordem = document.querySelector('#ordem').value;
+    const resposta = await fetch(`/api/chamados?status=${encodeURIComponent(status)}&ordem=${encodeURIComponent(ordem)}`);
     if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
     const chamados = await resposta.json();
     renderizarChamados(chamados);
@@ -42,4 +43,5 @@ async function carregarChamados() {
 
 botaoAtualizar.addEventListener('click', carregarChamados);
 document.querySelector('#filtro-status').addEventListener('change', carregarChamados);
+document.querySelector('#ordem').addEventListener('change', carregarChamados);
 carregarChamados();

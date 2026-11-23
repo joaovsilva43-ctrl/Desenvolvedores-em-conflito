@@ -17,13 +17,23 @@ public class ChamadoService {
         new Chamado(108, "Trocar mouse da recepção", "Administrativo", "Baixa", "Aberto")
     );
 
-    public List<Chamado> listar(Map<String, String> parametros) {
+       public List<Chamado> listar(Map<String, String> parametros) {
         List<Chamado> resultado = new ArrayList<>(DADOS);
         String status = parametros.getOrDefault("status", "");
         if (!status.isEmpty()) {
             resultado.removeIf(c -> !c.getStatus().equals(status));
         }
+        String ordem = parametros.getOrDefault("ordem", "");
+        if (ordem.equals("prioridade")) {
+            resultado.sort((a, b) -> Integer.compare(peso(b.getPrioridade()), peso(a.getPrioridade())));
+        }
         return resultado;
+    }
+
+    private int peso(String prioridade) {
+        if (prioridade.equals("Alta")) return 3;
+        if (prioridade.equals("Média")) return 2;
+        return 1;
     }
 
     public List<Chamado> todos() {
