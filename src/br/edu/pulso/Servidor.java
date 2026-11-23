@@ -22,6 +22,7 @@ public class Servidor {
         int porta = Integer.parseInt(System.getenv().getOrDefault("PORTA", "8766"));
         HttpServer http = HttpServer.create(new InetSocketAddress("127.0.0.1", porta), 0);
         http.createContext("/api/chamados", Servidor::responderChamados);
+        http.createContext("/api/resumo", Servidor::responderResumo);
         http.createContext("/", Servidor::responderArquivo);
         http.start();
         System.out.println("Painel PULSO: http://localhost:" + porta);
@@ -42,6 +43,18 @@ public class Servidor {
         }
         json.append("]");
         enviar(ex, 200, "application/json", json.toString());
+    }
+
+    private static void responderResumo(HttpExchange ex) throws IOException {
+        if (!"GET".equals(ex.getRequestMethod())) {
+            enviar(ex, 405, "application/json", "{\"erro\":\"Método não permitido\"}");
+            return;
+        }
+        List<Chamado> chamados = SERVICE.todos();
+        long abertos = chamados.stream().filter(c -> c.getStatus().equals("Aberto")).count();
+        long concluidos = chamados.stream().filter(c -> c.getStatus().equals("Concluído")).count();
+        String json = "{\"total\":" + chamados.size() + ",\"abertos\":" + abertos + ",\"concluidos\":" + concluidos + "}";
+        enviar(ex, 200, "application/json", json);
     }
 
     private static Map<String, String> lerParametros(String query) {

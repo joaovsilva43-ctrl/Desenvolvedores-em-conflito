@@ -41,7 +41,21 @@ async function carregarChamados() {
   }
 }
 
-botaoAtualizar.addEventListener('click', carregarChamados);
+async function carregarResumo() {
+  try {
+    const resposta = await fetch('/api/resumo');
+    if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
+    const resumo = await resposta.json();
+    document.querySelector('#total').textContent = resumo.total;
+    document.querySelector('#abertos').textContent = resumo.abertos;
+    document.querySelector('#concluidos').textContent = resumo.concluidos;
+  } catch (erro) {
+    feedback.textContent = `Não foi possível carregar o resumo: ${erro.message}`;
+  }
+}
+
+botaoAtualizar.addEventListener('click', () => { carregarChamados(); carregarResumo(); });
 document.querySelector('#filtro-status').addEventListener('change', carregarChamados);
 document.querySelector('#ordem').addEventListener('change', carregarChamados);
 carregarChamados();
+carregarResumo();
