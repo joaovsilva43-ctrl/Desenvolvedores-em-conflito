@@ -17,11 +17,15 @@ public class ChamadoService {
         new Chamado(108, "Trocar mouse da recepção", "Administrativo", "Baixa", "Aberto")
     );
 
-       public List<Chamado> listar(Map<String, String> parametros) {
+    public List<Chamado> listar(Map<String, String> parametros) {
         List<Chamado> resultado = new ArrayList<>(DADOS);
         String status = parametros.getOrDefault("status", "");
         if (!status.isEmpty()) {
             resultado.removeIf(c -> !c.getStatus().equals(status));
+        }
+        String setor = parametros.getOrDefault("setor", "");
+        if (!setor.isEmpty()) {
+            resultado.removeIf(c -> !c.getSetor().equals(setor));
         }
         String ordem = parametros.getOrDefault("ordem", "");
         if (ordem.equals("prioridade")) {
