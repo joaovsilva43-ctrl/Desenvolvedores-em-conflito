@@ -19,6 +19,10 @@ public class ChamadoService {
 
     public List<Chamado> listar(Map<String, String> parametros) {
         List<Chamado> resultado = new ArrayList<>(DADOS);
+        String status = parametros.getOrDefault("status", "");
+        if (!status.isEmpty()) {
+            resultado.removeIf(c -> !c.getStatus().equals(status));
+        }
         return resultado;
     }
 

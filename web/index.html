@@ -23,6 +23,14 @@
       <section class="painel">
         <div class="painel-cabecalho"><div><h2>Solicitações</h2><p>Consulte a fila de atendimento.</p></div><span class="contador" id="contador">— chamados</span></div>
         <div class="controles" id="controles">
+          <label>Status
+            <select id="filtro-status">
+              <option value="">Todos os status</option>
+              <option value="Aberto">Aberto</option>
+              <option value="Em andamento">Em andamento</option>
+              <option value="Concluído">Concluído</option>
+            </select>
+          </label>
           <span class="ajuda">Equipe de suporte · Atualização sob demanda</span>
           <button id="atualizar" type="button">Atualizar lista</button>
         </div>
