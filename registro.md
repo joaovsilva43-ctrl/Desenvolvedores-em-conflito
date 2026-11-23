@@ -36,4 +36,4 @@ Cada integrante revisou a parte que desenvolveu.
 | Filtro por setor (feature/setor) | João Victor |
 
 ## Testes realizados (Desafio 4)
-Testamos no painel (http://localhost:8766): sem filtros (8 chamados), status Aberto, status Em andamento, ordenação por prioridade, status + ordenação, setor Sistemas, setor + ordenação e os indicadores (8, 4 e 2, sem mudar ao filtrar). Todos passaram.
+Testamos no painel (http://localhost:8766): sem filtros (8 chamados), status Aberto, status Em andamento, ordenação por prioridade, status + ordenação, setor Sistemas, setor + ordenação, setor Sistemas + status Concluído, setor Infraestrutura + status Aberto + ordenação (chamado 101 antes do 104), atualização da página (F5) e os indicadores (8, 4 e 2, sem mudar ao filtrar). Todos passaram.
