@@ -1,0 +1,25 @@
+﻿* c03e38a (HEAD -> main) docs: registro de integracao e historico
+*   4af08ad Merge branch 'feature/setor'
+|\  
+| * fd21453 (feature/setor) feat: filtro de chamados por setor
+|/  
+*   a23cb65 Merge remote-tracking branch 'origin/feature/resumo'
+|\  
+| * 7078ede (origin/feature/resumo) docs: apresentar criterios sem pontuacao definida
+| * 8178a02 feat: indicadores de atendimento no painel
+* |   465b182 Merge remote-tracking branch 'origin/feature/ordenacao'
+|\ \  
+| * | c889400 (origin/feature/ordenacao) docs: apresentar criterios sem pontuacao definida
+| * | b103f7a feat: ordenar chamados por prioridade
+| |/  
+* |   98da178 Merge remote-tracking branch 'origin/feature/filtros'
+|\ \  
+| * | e0e3d6a (origin/feature/filtros) docs: apresentar criterios sem pontuacao definida
+| * | 522d7d1 feat: filtro de chamados por status
+| |/  
+* | bf2a44c (origin/main, origin/HEAD) Update section titles in README.md for consistency
+* | 7f7fa20 Update README.md
+* | 10a592a docs: apresentar criterios sem pontuacao definida
+|/  
+* 9f72fc4 docs: unificar orientacoes e enunciado no README
+* 3380f44 chore: painel inicial de chamados
