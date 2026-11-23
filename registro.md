@@ -1,21 +1,39 @@
- # Registro de integração
+# Registro de integração
 
-## Quem entregou o quê
-| Branch | Funcionalidade | Responsável |
+## Integrantes
+João Victor, Leanderson, Danilo, Ana Beatriz e Fernando.
+
+## Quem entregou o quê (Desafio 1)
+| Branch | O que entregou | Arquivos alterados | Responsável |
+|---|---|---|---|
+| feature/filtros | Filtro de chamados por status | ChamadoService.java, web/app.js, web/index.html | Danilo |
+| feature/ordenacao | Ordenação por prioridade (Alta, Média, Baixa) | ChamadoService.java, web/app.js, web/index.html | Fernando e Ana Beatriz |
+| feature/resumo | Indicadores de total, abertos e concluídos | Servidor.java (rota /api/resumo), web/app.js, web/index.html | Leanderson |
+| feature/setor | Filtro por setor (criada na versão integrada) | ChamadoService.java, web/app.js, web/index.html | João Victor |
+
+As branches filtros e ordenacao alteraram os mesmos três arquivos, o que explica os conflitos. A resumo foi a única a alterar o Servidor.java.
+
+## Conflitos e resoluções (Desafio 2)
+Todos os merges usaram `--no-ff`, para preservar o histórico das branches.
+
+| Merge | Conflito | Como foi resolvido |
 |---|---|---|
-| feature/filtros | Filtro de chamados por status | Maria |
-| feature/ordenacao | Ordenação por prioridade | Pedro |
-| feature/resumo | Indicadores de atendimento | Ana |
-| feature/setor | Filtro por setor | Joao Victor |
+| feature/filtros | Nenhum | Merge automático (só o README mesclou sozinho) |
+| feature/ordenacao | ChamadoService.java, web/app.js e web/index.html | Mantivemos o filtro por status e a ordenação, juntos e sem duplicar linhas |
+| feature/resumo | web/app.js | Mantivemos a função carregarResumo() e os listeners dos selects, cada um uma vez só |
+| feature/setor | Nenhum | A branch partiu da main já integrada |
 
-## Conflitos e resoluções
-**Merge da feature/filtros:** sem conflito (só o README mesclou sozinho).
+Nenhuma implementação foi apagada para resolver conflito.
 
-**Merge da feature/ordenacao:** conflito em `ChamadoService.java`, `web/app.js` e `web/index.html`. Mantive o filtro por status e a ordenação juntos, sem duplicar linhas.
+## Revisão (quem ficou responsável por cada parte)
+Cada integrante revisou a parte que desenvolveu.
 
-**Merge da feature/resumo:** conflito em `web/app.js`. Mantive a função `carregarResumo()` e os listeners dos selects, cada um uma vez só.
+| Parte | Revisor |
+|---|---|
+| Filtro por status (feature/filtros) | Danilo |
+| Ordenação por prioridade (feature/ordenacao) | Fernando e Ana Beatriz |
+| Indicadores (feature/resumo) | Leanderson |
+| Filtro por setor (feature/setor) | João Victor |
 
-**Merge da feature/setor:** sem conflito, pois a branch partiu da `main` já unificada.
-
-## Testes realizados
-Testei 7 cenários no painel (filtros isolados, combinados e ordenação). Os cards de resumo continuaram em 8, 4 e 2 em todos.
+## Testes realizados (Desafio 4)
+Testamos no painel (http://localhost:8766): sem filtros (8 chamados), status Aberto, status Em andamento, ordenação por prioridade, status + ordenação, setor Sistemas, setor + ordenação e os indicadores (8, 4 e 2, sem mudar ao filtrar). Todos passaram.
